@@ -144,6 +144,6 @@ app.get("/newGeodata", (req, res) => {
   });
 });
 
-app.listen(3500, () => {
+app.listen(3500 || process.env.PORT, () => {
   console.log(`Server is running on port: 3500`);
 });
