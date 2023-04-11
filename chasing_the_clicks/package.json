@@ -1,7 +1,7 @@
 {
   "name": "chasing_the_clicks",
   "version": "0.1.0",
-  "homepage": "http://johnpatrick254.github.io/lighthall-super-leage-2023",
+  "homepage": "https://johnpatrick254.github.io/LightHall-Super-League-2023",
   "private": true,
   "dependencies": {
     "@aws-amplify/ui-react": "^4.5.1",
