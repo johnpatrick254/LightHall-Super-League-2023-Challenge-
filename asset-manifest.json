@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/lighthall-super-leage-2023/static/css/main.10ae4f67.css",
+    "main.js": "/lighthall-super-leage-2023/static/js/main.8b1d804e.js",
+    "static/js/787.a7274b62.chunk.js": "/lighthall-super-leage-2023/static/js/787.a7274b62.chunk.js",
+    "static/media/logo.svg": "/lighthall-super-leage-2023/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/lighthall-super-leage-2023/index.html",
+    "main.10ae4f67.css.map": "/lighthall-super-leage-2023/static/css/main.10ae4f67.css.map",
+    "main.8b1d804e.js.map": "/lighthall-super-leage-2023/static/js/main.8b1d804e.js.map",
+    "787.a7274b62.chunk.js.map": "/lighthall-super-leage-2023/static/js/787.a7274b62.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.10ae4f67.css",
+    "static/js/main.8b1d804e.js"
+  ]
+}
