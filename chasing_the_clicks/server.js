@@ -133,7 +133,6 @@ app.get("/newGeodata", (req, res) => {
                   )
                   .catch((e) => console.log(e));
               }
-
               newGeoData.find().then((count) => {
                 res.json(count);
               });
@@ -144,7 +143,6 @@ app.get("/newGeodata", (req, res) => {
     });
   });
 });
-
 
 app.listen(3500, () => {
   console.log(`Server is running on port: 3500`);
