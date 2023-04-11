@@ -45,7 +45,6 @@ function App() {
       .catch((err) => console.log(err));
   };
 
-
   return (
     <div className="App">
       <nav>
@@ -57,17 +56,25 @@ function App() {
           <Button onClick={handleClicks}>Click Me!</Button>
         </div>
         <div className="geostat">
-        <div>
-          <hr/>
-          <h3>Clicks By Region <Button size="small" onClick={checkGeoData}>Click to Reveal</Button></h3>
-          
+          <div>
+            <hr />
+            <h3>
+              Clicks By Region
+              <Button size="small" onClick={checkGeoData}>
+                Click to Reveal
+              </Button>
+            </h3>
           </div>
           <Flex direction="column">
             <Table variation="bordered">
               <TableBody>
                 <TableRow className="first_table_row">
-                  <TableCell><strong>Country</strong></TableCell>
-                  <TableCell><strong>Clicks</strong></TableCell>
+                  <TableCell>
+                    <strong>Country</strong>
+                  </TableCell>
+                  <TableCell>
+                    <strong>Clicks</strong>
+                  </TableCell>
                 </TableRow>
                 {geoInfo.map((items, index) => {
                   return (
