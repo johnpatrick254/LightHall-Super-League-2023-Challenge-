@@ -1,0 +1,38 @@
+html{
+    box-sizing: border-box;
+    margin: 0;
+    padding:0 ;
+    justify-content: center;
+    display: flex;
+}
+
+#root{
+    margin: 2% auto;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between; 
+    max-width: 1100px;   
+    min-width: 480px;
+    justify-content: center;
+}
+
+.main{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between; 
+}
+.first_table_row{
+background: rgb(209, 198, 198) !important;
+}
+
+.my-custom-table .amplify-table__td {
+    font-size: var(--amplify-font-sizes-xs);
+  }
+  
+  .my-custom-table .amplify-table__row {
+    background-color: var(--amplify-colors-neutral-60);
+  }
+
+ hr{
+  margin: 2% 0;
+}
