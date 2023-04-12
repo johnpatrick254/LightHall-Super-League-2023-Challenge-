@@ -82,7 +82,7 @@ function App() {
                     <strong>Country</strong>
                   </TableCell>
                   <TableCell>
-                    <strong>Clicks</strong>
+                    <strong>Unique Clicks</strong>
                   </TableCell>
                 </TableRow>
                 {geoInfo.map((items, index) => {
