@@ -12,6 +12,7 @@ import {
 } from "@aws-amplify/ui-react";
 import "@aws-amplify/ui-react/styles.css";
 import GeoTable from "./components/tabledata";
+import DOMPurify from "dompurify"
 
 function App() {
   const [geoInfo, setGeoInfo] = useState([]);
@@ -22,7 +23,7 @@ function App() {
     )
       .then((res) => res.json())
       .then((data) => {
-        setInt(data[0].clicks);
+        setInt(DOMPurify.sanitize(data[0].clicks));
       })
       .catch((err) => console.log(err));
   }
@@ -32,7 +33,7 @@ function App() {
     )
       .then((res) => res.json())
       .then((data) => {
-        setInt(data[0].clicks);
+        setInt(DOMPurify.sanitize(data[0].clicks));
       })
       .catch((err) => console.log(err));
   };
@@ -46,7 +47,7 @@ function App() {
         const geoTable = data.sort((a, b) => {
           return b.count - a.count;
         });
-        setGeoInfo(geoTable);
+        setGeoInfo(DOMPurify.sanitize(geoTable));
       })
       .catch((err) => console.log(err));
   };
@@ -59,7 +60,7 @@ function App() {
       <section className="main">
         <div className="counter">
           <h1 >{intClicks}</h1>
-          <Button onClick={handleClicks}>Click Me!</Button>
+          <Button onClick={handleClicks}>Click Me</Button>
         </div>
         <div className="geostat">
           <div>
