@@ -17,7 +17,7 @@ function App() {
   const [geoInfo, setGeoInfo] = useState([]);
   const [intClicks, setInt] = useState(null);
   if (intClicks === null) {
-    fetch("https://my-clicks-se-api.vercel.app/getclicks")
+    fetch("https://my-clicks-se-apis.vercel.app/getclicks")
       .then((res) => res.json())
       .then((data) => {
         setInt(data[0].clicks);
@@ -25,7 +25,7 @@ function App() {
       .catch((err) => console.log(err));
   }
   const handleClicks = () => {
-    fetch("https://my-clicks-se-api.vercel.app/updateclicks")
+    fetch("https://my-clicks-se-apis.vercel.app/updateclicks")
       .then((res) => res.json())
       .then((data) => {
         setInt(DOMPurify.sanitize(data[0].clicks));
@@ -34,7 +34,7 @@ function App() {
   };
 
   let checkGeoData = () => {
-    fetch("https://my-clicks-se-api.vercel.app/newGeodata")
+    fetch("https://my-clicks-se-apis.vercel.app/newGeodata")
       .then((res) => res.json())
       .then((data) => {
         const geoTable = data.sort((a, b) => {
