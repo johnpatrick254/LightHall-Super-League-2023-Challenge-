@@ -5,32 +5,27 @@ import {
   Button,
   Table,
   TableBody,
-  TableHead,
   Flex,
   TableCell,
   TableRow,
 } from "@aws-amplify/ui-react";
 import "@aws-amplify/ui-react/styles.css";
 import GeoTable from "./components/tabledata";
-import DOMPurify from "dompurify"
+import DOMPurify from "dompurify";
 
 function App() {
   const [geoInfo, setGeoInfo] = useState([]);
   const [intClicks, setInt] = useState(null);
   if (intClicks === null) {
-    fetch(
-      "https://check-click-api-git-main-johnpatrick254.vercel.app/getclicks"
-    )
+    fetch("https://my-clicks-se-api.vercel.app/getclicks")
       .then((res) => res.json())
       .then((data) => {
-        setInt(DOMPurify.sanitize(data[0].clicks));
+        setInt(data[0].clicks);
       })
       .catch((err) => console.log(err));
   }
   const handleClicks = () => {
-    fetch(
-      "https://check-click-api-git-main-johnpatrick254.vercel.app/updateclicks"
-    )
+    fetch("https://my-clicks-se-api.vercel.app/updateclicks")
       .then((res) => res.json())
       .then((data) => {
         setInt(DOMPurify.sanitize(data[0].clicks));
@@ -39,15 +34,13 @@ function App() {
   };
 
   let checkGeoData = () => {
-    fetch(
-      "https://check-click-api-git-main-johnpatrick254.vercel.app/newGeodata"
-    )
+    fetch("https://my-clicks-se-api.vercel.app/newGeodata")
       .then((res) => res.json())
       .then((data) => {
         const geoTable = data.sort((a, b) => {
           return b.count - a.count;
         });
-        setGeoInfo(DOMPurify.sanitize(geoTable));
+        setGeoInfo(geoTable);
       })
       .catch((err) => console.log(err));
   };
@@ -59,14 +52,15 @@ function App() {
       </nav>
       <section className="main">
         <div className="counter">
-          <h1 >{intClicks}</h1>
+          <h1>{intClicks}</h1>
           <Button onClick={handleClicks}>Click Me</Button>
         </div>
         <div className="geostat">
           <div>
             <hr />
             <h3>
-              Clicks By Region               <Button className="reveal"size="small" onClick={checkGeoData}>
+              Clicks By Region{" "}
+              <Button className="reveal" size="small" onClick={checkGeoData}>
                 Show Ranking
               </Button>
             </h3>
@@ -85,9 +79,9 @@ function App() {
                 {geoInfo.map((items, index) => {
                   return (
                     <GeoTable
-                      key={index}
-                      country={items.country}
-                      count={items.count}
+                      key={DOMPurify.sanitize(index)}
+                      country={DOMPurify.sanitize(items.country)}
+                      count={DOMPurify.sanitize(items.count)}
                     />
                   );
                 })}

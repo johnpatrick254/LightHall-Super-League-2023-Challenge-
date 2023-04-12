@@ -8,7 +8,7 @@ const path  = require("path")
 app.use(express.static(path.join(__dirname + "/public")))
 app.use(express.json());
 app.use(cors({
-  origin: '*'
+  origin: 'https://chasemyclicks.vercel.app/'
 }));
 //db ops connection
 const password = process.env.PASSWORD;

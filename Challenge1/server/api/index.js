@@ -1,12 +1,15 @@
 require("dotenv").config();
 const express = require("express");
+const cors = require("cors")
 const mongoose = require("mongoose");
 const app = express();
 const https = require("https");
 const path  = require("path")
 app.use(express.static(path.join(__dirname + "/public")))
 app.use(express.json());
-
+app.use(cors({
+  origin: 'https://chasemyclicks.vercel.app/'
+}));
 //db ops connection
 const password = process.env.PASSWORD;
 mongoose.set("strictQuery", true);
@@ -48,7 +51,7 @@ const newClick = mongoose.model("Click", clicksSchema);
 //clicks
 app.get("/updateclicks", (req, res) => {
   newClick.find().then((item) => {
-    if (item.length !== 0) {
+    if (item.length === 0) {
       let count = new newClick({
         id: 1,
         clicks: 0,
