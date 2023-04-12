@@ -1,6 +1,5 @@
 require("dotenv").config();
 const express = require("express");
-const cors = require("cors");
 const mongoose = require("mongoose");
 const app = express();
 const https = require("https");
@@ -144,6 +143,6 @@ app.get("/newGeodata", (req, res) => {
   });
 });
 
-app.listen(3500 || process.env.PORT, () => {
+app.listen(process.env.PORT ||3500 , () => {
   console.log(`Server is running on port: 3500`);
 });
