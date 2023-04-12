@@ -37,4 +37,9 @@ html {
   hr {
     margin: 2% 0;
   }
-  
+  .counter  button{
+    margin:2%;
+  }
+  .reveal  {
+    margin:2%;
+  }

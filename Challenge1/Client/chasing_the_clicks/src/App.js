@@ -16,19 +16,27 @@ import GeoTable from "./components/tabledata";
 function App() {
   const [geoInfo, setGeoInfo] = useState([]);
   const [intClicks, setInt] = useState(null);
-    if (intClicks === null) {
+  if (intClicks === null) {
     fetch(
       "https://check-click-api-git-main-johnpatrick254.vercel.app/getclicks"
     )
       .then((res) => res.json())
       .then((data) => {
-        
-          setInt(data[0].clicks);
-        
+        setInt(data[0].clicks);
       })
-        .catch((err) => console.log(err));
-      }
-  
+      .catch((err) => console.log(err));
+  }
+  const handleClicks = () => {
+    fetch(
+      "https://check-click-api-git-main-johnpatrick254.vercel.app/updateclicks"
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setInt(data[0].clicks);
+      })
+      .catch((err) => console.log(err));
+  };
+
   let checkGeoData = () => {
     fetch(
       "https://check-click-api-git-main-johnpatrick254.vercel.app/newGeodata"
@@ -43,17 +51,6 @@ function App() {
       .catch((err) => console.log(err));
   };
 
-  const handleClicks = () => {
-    fetch(
-      "https://check-click-api-git-main-johnpatrick254.vercel.app/updateclicks"
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        setInt(data[0].clicks);
-      })
-      .catch((err) => console.log(err));
-  };
-
   return (
     <div className="App">
       <nav>
@@ -61,15 +58,14 @@ function App() {
       </nav>
       <section className="main">
         <div className="counter">
-          <h1>{intClicks}</h1>
+          <h1 >{intClicks}</h1>
           <Button onClick={handleClicks}>Click Me!</Button>
         </div>
         <div className="geostat">
           <div>
             <hr />
             <h3>
-              Clicks By Region
-              <Button size="small" onClick={checkGeoData}>
+              Clicks By Region               <Button className="reveal"size="small" onClick={checkGeoData}>
                 Click to Reveal
               </Button>
             </h3>
