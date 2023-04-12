@@ -48,7 +48,7 @@ const newClick = mongoose.model("Click", clicksSchema);
 //clicks
 app.get("/updateclicks", (req, res) => {
   newClick.find().then((item) => {
-    if (item.length === 0) {
+    if (item.length !== 0) {
       let count = new newClick({
         id: 1,
         clicks: 0,

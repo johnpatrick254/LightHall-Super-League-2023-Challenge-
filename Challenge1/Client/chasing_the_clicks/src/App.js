@@ -14,19 +14,21 @@ import "@aws-amplify/ui-react/styles.css";
 import GeoTable from "./components/tabledata";
 
 function App() {
-  const [intClicks, setInt] = useState();
   const [geoInfo, setGeoInfo] = useState([]);
+  const [intClicks, setInt] = useState(null);
 
-  fetch(
-    "https://check-click-api-git-main-johnpatrick254.vercel.app/getclicks"
-  )
-    .then((res) => res.json())
-    .then((data) => {
-      console.log(data);
-      setInt(data[0].clicks);
-    })
-    .catch((err) => console.log(err));
-
+  useEffect(() => {
+    fetch(
+      "https://check-click-api-git-main-johnpatrick254.vercel.app/getclicks"
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        if (intClicks === null) {
+          setInt(data[0].clicks);
+        }
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
   let checkGeoData = () => {
     fetch(
@@ -41,6 +43,7 @@ function App() {
       })
       .catch((err) => console.log(err));
   };
+
   const handleClicks = () => {
     fetch(
       "https://check-click-api-git-main-johnpatrick254.vercel.app/updateclicks"
