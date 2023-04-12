@@ -7,11 +7,12 @@ const https = require("https");
 const path = require("path");
 app.use(express.static(path.join(__dirname + "/public")));
 app.use(express.json());
-app.use(
-  cors({
-    origin: "https://chasemyclicks.vercel.app/",
-  })
-);
+var corsOptions = {
+  origin: 'https://chasemyclicks-git-main-johnpatrick254.vercel.app/',
+  optionsSuccessStatus: 200 
+}
+app.options('*', cors(corsOptions))
+
 //db ops connection
 const password = process.env.PASSWORD;
 mongoose.set("strictQuery", true);
@@ -51,7 +52,7 @@ const newClick = mongoose.model("Click", clicksSchema);
 //API endpoints
 
 //clicks
-app.get("/updateclicks", (req, res) => {
+app.get("/updateclicks",cors(corsOptions), (req, res) => {
   newClick.find().then((item) => {
     if (item.length === 0) {
       let count = new newClick({
@@ -69,7 +70,7 @@ app.get("/updateclicks", (req, res) => {
     });
   });
 });
-app.get("/getclicks", (req, res) => {
+app.get("/getclicks", cors(corsOptions),(req, res) => {
   newClick.find({ id: 1 }).then((item) => {
     if (item.length === 0) {
       let count = new newClick({
@@ -84,7 +85,7 @@ app.get("/getclicks", (req, res) => {
 });
 
 //geodata
-app.get("/newGeodata", (req, res) => {
+app.get("/newGeodata", cors(corsOptions), (req, res) => {
   const uri = "https://api.ipregistry.co/";
   const API_KEY = process.env.API_KEY;
   let IP = (
