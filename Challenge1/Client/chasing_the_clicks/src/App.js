@@ -1,6 +1,6 @@
 import logo from "./logo.svg";
 import "./App.css";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import {
   Button,
   Table,
@@ -14,40 +14,44 @@ import "@aws-amplify/ui-react/styles.css";
 import GeoTable from "./components/tabledata";
 
 function App() {
-  
   const [intClicks, setInt] = useState();
   const [geoInfo, setGeoInfo] = useState([]);
-  
-  useEffect(() => {
-    fetch("http://localhost:3500/getclicks")
+
+  fetch(
+    "https://check-click-api-git-main-johnpatrick254.vercel.app/getclicks"
+  )
     .then((res) => res.json())
     .then((data) => {
-      console.log(data)
+      console.log(data);
       setInt(data[0].clicks);
     })
     .catch((err) => console.log(err));
-  }, [intClicks]);
-  
+
+
   let checkGeoData = () => {
-    fetch("http://localhost:3500/newGeodata")
-    .then((res) => res.json())
-    .then((data) => {
-      const geoTable = data.sort((a, b) => {
-        return b.count - a.count;
-      });
-      setGeoInfo(geoTable);
-    })
-    .catch((err) => console.log(err));
+    fetch(
+      "https://check-click-api-git-main-johnpatrick254.vercel.app/newGeodata"
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        const geoTable = data.sort((a, b) => {
+          return b.count - a.count;
+        });
+        setGeoInfo(geoTable);
+      })
+      .catch((err) => console.log(err));
   };
   const handleClicks = () => {
-    fetch("http://localhost:3500/updateclicks")
-    .then((res) => res.json())
-    .then((data) => {
-      setInt(data[0].clicks);
-    })
-    .catch((err) => console.log(err));
+    fetch(
+      "https://check-click-api-git-main-johnpatrick254.vercel.app/updateclicks"
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setInt(data[0].clicks);
+      })
+      .catch((err) => console.log(err));
   };
-  
+
   return (
     <div className="App">
       <nav>
