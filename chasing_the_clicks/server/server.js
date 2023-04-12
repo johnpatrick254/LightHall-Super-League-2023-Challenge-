@@ -4,7 +4,11 @@ const mongoose = require("mongoose");
 const app = express();
 const https = require("https");
 const path  = require("path")
+const cors = require('cors');
 app.use(express.static(path.join(__dirname + "/public")))
+app.use(cors({
+  origin: '*'
+}));
 app.use(express.json());
 
 //db ops connection
