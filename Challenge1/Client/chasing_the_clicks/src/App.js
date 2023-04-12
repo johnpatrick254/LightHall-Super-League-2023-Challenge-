@@ -15,15 +15,16 @@ import DOMPurify from "dompurify";
 
 function App() {
   const [geoInfo, setGeoInfo] = useState([]);
-  const [intClicks, setInt] = useState(null);
-  useEffect(()=>{
+  const [intClicks, setInt] = useState();
+  useEffect(() => {
     fetch("https://my-clicks-se-apis.vercel.app/getclicks")
-    .then((res) => res.json())
-    .then((data) => {
-      setInt(data[0].clicks);
-    })
-    .catch((err) => console.log(err));
-  },[])
+      .then((res) => res.json())
+      .then((data) => {
+        setInt(data[0].clicks);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
   const handleClicks = () => {
     fetch("https://my-clicks-se-apis.vercel.app/updateclicks")
       .then((res) => res.json())

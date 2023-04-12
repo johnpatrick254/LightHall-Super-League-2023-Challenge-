@@ -1,15 +1,17 @@
 require("dotenv").config();
 const express = require("express");
-const cors = require("cors")
+const cors = require("cors");
 const mongoose = require("mongoose");
 const app = express();
 const https = require("https");
-const path  = require("path")
-app.use(express.static(path.join(__dirname + "/public")))
+const path = require("path");
+app.use(express.static(path.join(__dirname + "/public")));
 app.use(express.json());
-app.use(cors({
-  origin:'https://chasemyclicks.vercel.app/'
-}));
+app.use(
+  cors({
+    origin: "https://chasemyclicks.vercel.app/",
+  })
+);
 //db ops connection
 const password = process.env.PASSWORD;
 mongoose.set("strictQuery", true);
@@ -146,7 +148,7 @@ app.get("/newGeodata", (req, res) => {
   });
 });
 
-app.listen(process.env.PORT ||3500 , () => {
+app.listen(process.env.PORT || 3500, () => {
   console.log(`Server is running on port: 3500`);
 });
 module.export = app;
