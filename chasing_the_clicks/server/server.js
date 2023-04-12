@@ -4,8 +4,8 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const app = express();
 const https = require("https");
-
-app.use(cors());
+const path  = require("path")
+app.use(express.static(path.join(__dirname + "/public")))
 app.use(express.json());
 
 //db ops connection
