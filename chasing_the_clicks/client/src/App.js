@@ -23,7 +23,7 @@ function App() {
         setInt(data[0].clicks);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [intClicks]);
 
   let checkGeoData = () => {
     fetch("http://localhost:3500/newGeodata")

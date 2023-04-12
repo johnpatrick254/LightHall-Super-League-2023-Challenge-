@@ -16,20 +16,19 @@ import GeoTable from "./components/tabledata";
 function App() {
   const [geoInfo, setGeoInfo] = useState([]);
   const [intClicks, setInt] = useState(null);
-
-  useEffect(() => {
+    if (intClicks === null) {
     fetch(
       "https://check-click-api-git-main-johnpatrick254.vercel.app/getclicks"
     )
       .then((res) => res.json())
       .then((data) => {
-        if (intClicks === null) {
+        
           setInt(data[0].clicks);
-        }
+        
       })
-      .catch((err) => console.log(err));
-  }, []);
-
+        .catch((err) => console.log(err));
+      }
+  
   let checkGeoData = () => {
     fetch(
       "https://check-click-api-git-main-johnpatrick254.vercel.app/newGeodata"
