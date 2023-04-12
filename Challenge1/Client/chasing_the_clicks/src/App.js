@@ -66,7 +66,7 @@ function App() {
             <hr />
             <h3>
               Clicks By Region               <Button className="reveal"size="small" onClick={checkGeoData}>
-                Click to Reveal
+                Show Ranking
               </Button>
             </h3>
           </div>
