@@ -30,7 +30,9 @@ function App() {
     setInt(prev=>{
       return ++prev
     })
-    fetch("https://my-clicks-se-apis.vercel.app/updateclicks").catch((err) => console.log(err));
+    fetch("https://my-clicks-se-apis.vercel.app/updateclicks").catch((err) => {console.log(err); setInt(prev=>{
+      return --prev
+    })});
   };
 
   let checkGeoData = () => {
