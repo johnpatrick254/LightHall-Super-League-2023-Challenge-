@@ -26,12 +26,11 @@ function App() {
   }, []);
 
   const handleClicks = () => {
-    fetch("https://my-clicks-se-apis.vercel.app/updateclicks")
-      .then((res) => res.json())
-      .then((data) => {
-        setInt(DOMPurify.sanitize(data[0].clicks));
-      })
-      .catch((err) => console.log(err));
+
+    setInt(prev=>{
+      return ++prev
+    })
+    fetch("https://my-clicks-se-apis.vercel.app/updateclicks").catch((err) => console.log(err));
   };
 
   let checkGeoData = () => {
