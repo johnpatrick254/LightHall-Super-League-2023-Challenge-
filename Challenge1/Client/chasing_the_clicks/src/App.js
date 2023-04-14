@@ -16,6 +16,9 @@ import DOMPurify from "dompurify";
 function App() {
   const [geoInfo, setGeoInfo] = useState([]);
   const [intClicks, setInt] = useState();
+  if(intClicks === NaN){
+    setInt("Loading Counts...")
+  }
   useEffect(() => {
     fetch("https://my-clicks-se-apis.vercel.app/getclicks")
       .then((res) => res.json())
