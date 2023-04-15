@@ -61,15 +61,18 @@ function App() {
       </nav>
       <section className="main">
         <div className="counter">
-         {!loaded ? loadingBar("spinningBubbles","Black") :<div>
+         {!loaded ? loadingBar("spinningBubbles","50%") :<div>
           <h1>{intClicks}</h1>
           <Button  onClick={handleClicks}>Click Me</Button></div>
         }
         </div>
         
-        <div className="geostat">
-          <div>
                         <hr />
+        <div className="geostat">
+
+        {!loaded ? loadingBar("spinningBubbles","Black") :
+         <div>
+          <div>
             <h3>
               Clicks By Region{" "}
               <Button className="reveal" size="small" onClick={checkGeoData}>
@@ -100,6 +103,7 @@ function App() {
               </TableBody>
             </Table>
           </Flex>
+          </div>}
         </div>
       </section>
     </div>

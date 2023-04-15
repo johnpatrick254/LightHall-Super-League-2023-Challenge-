@@ -1,8 +1,6 @@
 import React from "react";
-import ReactLoading from "react-loading"
-
-const loadingBar = ( type, color ) => (
-    <ReactLoading type={type} color={color} height={'10%'} width={'10%'} />
-);
+import {Skeleton} from "@mui/material"
+const loadingBar = ( type, Width ) => (
+    <Skeleton animation="wave"  variant="rounded" width={Width} height={"8.2em"} />)
  
 export default loadingBar;
