@@ -37,8 +37,15 @@ html {
   hr {
     margin: 2% 0;
   }
+  .counter{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+  }
   .counter  button{
     margin:2%;
+    width: 100%;
   }
   .reveal  {
     margin:2%;
